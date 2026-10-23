@@ -13,6 +13,7 @@ public class CamFollowTarget : MonoBehaviour
     private void Update()
     {
         Vector2 _moveComp = rb.linearVelocity * distanceMultiply;
-        transform.localPosition = new Vector3(_moveComp.x, _moveComp.y, transform.position.z);
+
+        transform.localPosition = new Vector3(_moveComp.x, _moveComp.y, 0);
     }
 }
