@@ -113,7 +113,7 @@ public class PlayerMovement : MonoBehaviour
         }
         else
         {
-            scaledMoveX = moveDirection.x * Mathf.Clamp(Mathf.Abs(groundedTimer + 0.5f), 0.5f, 1f) * 7f;
+            scaledMoveX = moveDirection.x * Mathf.Clamp(Mathf.Abs(groundedTimer + 0.5f), 0.5f, 1f) * 9f;
             targetVelocity = new Vector2(rb.linearVelocity.x * 0.55f + scaledMoveX, rb.linearVelocity.y);
         }
 
