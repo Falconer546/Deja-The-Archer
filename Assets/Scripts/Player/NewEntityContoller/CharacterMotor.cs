@@ -15,8 +15,8 @@ public class CharacterMotor : MonoBehaviour
     public float smoothMoveSpeed = 0.1f;
 
     [Header("Jump")]
-    public float jumpForce = 18f;
-    public float jumpDumping = 80f;         // extra downward force while rising
+    public float jumpForce = 20f;
+    public float jumpDumping = 60f;         // extra downward force while rising
     public float jumpCooldown = 0.12f;      // min time on ground before next jump
     public float coyoteTime = 0.12f;
 
