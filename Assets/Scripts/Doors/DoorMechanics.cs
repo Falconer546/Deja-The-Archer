@@ -29,21 +29,29 @@ public class DoorMechanics : MonoBehaviour
 
     private void Start()
     {
+        playerCollider = GameObject.FindGameObjectWithTag("Player").GetComponent<Collider2D>();
+
+        foreach (GameObject layer in GameObject.FindGameObjectsWithTag("DoorLayer"))
+        {
+            doorsLayers.Add(layer);
+        }
+
         foreach (GameObject dLayer in doorsLayers)
         {
             Collider2D[] allColliders = dLayer.GetComponentsInChildren<Collider2D>(true);
 
             foreach (Collider2D doorCollider in allColliders)
             {
-                if ((doorLayer.value & (1 << doorCollider.gameObject.layer)) != 0)
+                if (doorCollider.CompareTag("DoorObject") && !doorZones.Contains(doorCollider))
+                {
                     doorZones.Add(doorCollider);
-            }
+                }
+            }   
         }
     }
 
     private void Update()
     {
-        //p_activeLayer = 
         GetDoorsForPlayer();
     }
 
@@ -53,6 +61,7 @@ public class DoorMechanics : MonoBehaviour
         {
             ColliderDistance2D distance = Physics2D.Distance(playerCollider, door);
 
+            //Debug.Log("Distance: " + distance.distance + " Overlapped: " + distance.isOverlapped);
             if (distance.isOverlapped)
             {
                 useableDoor = door.gameObject;
@@ -63,15 +72,4 @@ public class DoorMechanics : MonoBehaviour
             
         }
     }
-
-    private void HideLayers()
-    {
-        
-    }
 }
-
-/*
-
-mizející vrstvy?
-
-*/

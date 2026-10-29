@@ -10,7 +10,14 @@ public class PlayerController : MonoBehaviour, ICharacterIntent
 {
     [Tooltip("A dash press stays valid this long, so pressing slightly early still works.")]
     [SerializeField] private float dashBufferTime = 0.1f;
-    [SerializeField] private GameObject bullet;
+
+    // DEBUG
+
+    public Bow _bow;
+
+    // DEBUG
+
+
 
     private CharacterMotor _motor;
     private InputAction _moveAction, _jumpAction, _dashAction, _attackAction;
@@ -44,10 +51,5 @@ public class PlayerController : MonoBehaviour, ICharacterIntent
             Attack();
     }
 
-    private void Attack()
-    {
-        if (bullet == null) return;
-        // TODO: give the bullet a direction (_motor.FacingDirection) once its script exists.
-        Instantiate(bullet, transform.position, Quaternion.identity);
-    }
+    private void Attack() => _bow.ShootArrow(_bow.aimPoint.position - _bow.shootPoint.position);
 }

@@ -58,7 +58,7 @@ public class EnemyController : MonoBehaviour, ICharacterIntent
     {
         if (target == null)
         {
-            PlayerController player = FindFirstObjectByType<PlayerController>();
+            PlayerController player = FindAnyObjectByType<PlayerController>();
             if (player != null) target = player.transform;
         }
 

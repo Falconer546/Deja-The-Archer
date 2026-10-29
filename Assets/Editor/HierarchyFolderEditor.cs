@@ -16,14 +16,15 @@ public static class HierarchyFolderEditor
     {
         if (_gradientTexture == null || _lastColor != color)
         {
-            _gradientTexture = new Texture2D(2, 1, TextureFormat.RGBA32, false)
+            _gradientTexture = new Texture2D(3, 1, TextureFormat.RGBA32, false)
             {
                 wrapMode = TextureWrapMode.Clamp
             };
             Color left = new Color(color.r, color.g, color.b, 0.25f);
             Color right = new Color(color.r, color.g, color.b, 0f);
             _gradientTexture.SetPixel(0, 0, left);
-            _gradientTexture.SetPixel(1, 0, right);
+            _gradientTexture.SetPixel(1, 0, left);
+            _gradientTexture.SetPixel(2, 0, right);
             _gradientTexture.Apply();
             _lastColor = color;
         }

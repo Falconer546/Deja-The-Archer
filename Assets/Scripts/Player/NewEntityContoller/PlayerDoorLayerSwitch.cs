@@ -25,22 +25,28 @@ public class PlayerDoorLayerSwitch : MonoBehaviour
     }
 
     private void FixedUpdate()
-    {
+    {   
+        
         if (DoorMechanics.useableDoor == null) return;
+        
         if (_intent.Move.y <= 0f || Time.time < _nextUseTime) return;
-
+        
         float doorToPlayerZ = DoorMechanics.useableDoor.transform.position.z - transform.position.z;
         if (Mathf.Abs(doorToPlayerZ) >= zTolerance) return;
-
+        
         Vector3 pos = transform.position;
+
+        Debug.Log($"Door Z: {DoorMechanics.useableDoor.transform.position.z}, Player Z: {transform.position.z}, Diff: {doorToPlayerZ}");
 
         if (doorToPlayerZ < 0f)
         {
+            Debug.Log("DDD");
             pos.z -= zStep;
             ShiftSortingLayer(+sortingLayerStep);
         }
         else if (doorToPlayerZ > 0f)
         {
+            Debug.Log("EEE");
             pos.z += zStep;
             ShiftSortingLayer(-sortingLayerStep);
         }
