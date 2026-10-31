@@ -24,6 +24,7 @@ public class PlayerController : MonoBehaviour, ICharacterIntent
 
     private void Awake()
     {
+        _bow = GetComponentInChildren<Bow>();
         _motor = GetComponent<CharacterMotor>();
 
         _moveAction = InputSystem.actions.FindAction("Move");
@@ -40,6 +41,7 @@ public class PlayerController : MonoBehaviour, ICharacterIntent
         if (_dashAction.WasPressedThisFrame())
             _dashBufferedUntil = Time.time + dashBufferTime;
 
+<<<<<<< Updated upstream
         if (_attackAction.WasPressedThisFrame())
             Attack();
     }
@@ -50,4 +52,9 @@ public class PlayerController : MonoBehaviour, ICharacterIntent
         // TODO: give the bullet a direction (_motor.FacingDirection) once its script exists.
         Instantiate(bullet, transform.position, Quaternion.identity);
     }
+=======
+        if (_attackAction.WasPressedThisFrame()) _bow.BeginDraw();
+        if (_attackAction.WasReleasedThisFrame()) _bow.ReleaseArrow();
+    }       
+>>>>>>> Stashed changes
 }
